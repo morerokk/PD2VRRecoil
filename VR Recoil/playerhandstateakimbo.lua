@@ -1,3 +1,5 @@
+dofile(ModPath .. "VRRecoilMain.lua")
+
 local playercam = nil
 local weaponInitialRotation = nil
 
@@ -21,6 +23,9 @@ function PlayerHandStateAkimbo:update(t, dt)
 	if not verticalKick or not horizontalKick or not weaponInitialRotation then
 		return result
 	end
+	
+	verticalKick = verticalKick * VRRecoil.OnehandedRecoilMultiplier
+	horizontalKick = horizontalKick * VRRecoil.OnehandedRecoilMultiplier
 	
 	local weaponRotation = mrotation.copy(weaponInitialRotation)
 	local weaponPitch = weaponRotation:pitch()

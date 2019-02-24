@@ -1,4 +1,5 @@
 if not VRRecoil then
 	_G.VRRecoil = {}
-	VRRecoil.TwohandedRecoilMultiplier = 0.5
+	VRRecoil.OnehandedRecoilMultiplier = 0.7
+	VRRecoil.TwohandedRecoilMultiplier = 0.35
 end
