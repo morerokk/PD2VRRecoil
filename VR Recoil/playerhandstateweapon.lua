@@ -22,7 +22,7 @@ function PlayerHandStateWeapon:update(t, dt)
 		return result
 	end
 	
-	-- Reduce recoil depending on parameters. Reduce more if two-handing the weapon
+	-- Reduce across the board, but reduce it more if two-handing the weapon
 	local is_assisting = self:hsm():other_hand():current_state_name() == "weapon_assist"
 	if is_assisting then
 		verticalKick = verticalKick * VRRecoil.TwohandedRecoilMultiplier
@@ -30,6 +30,11 @@ function PlayerHandStateWeapon:update(t, dt)
 	else
 		verticalKick = verticalKick * VRRecoil.OnehandedRecoilMultiplier
 		horizontalKick = horizontalKick * VRRecoil.OnehandedRecoilMultiplier
+	end
+	
+	-- Work around possible crashes like with bows
+	if not self._weapon_unit then
+		return result
 	end
 	
 	local weaponRotation = self._weapon_unit:rotation()
