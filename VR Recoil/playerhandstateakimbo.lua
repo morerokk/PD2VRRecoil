@@ -11,12 +11,26 @@ local function getPlayerCam()
 	end
 end
 
+-- Get the current rotation of the akimbo weapon
+-- This is necessary because unlike PlayerHandStateWeapon, the weapon unit is not automatically set back to the correct position.
+function PlayerHandStateAkimbo:getWeaponRotation()
+	if self._weapon_unit then
+		return self._weapon_unit:local_rotation()
+	end
+end
+
 local akimboenter_orig = PlayerHandStateAkimbo.at_enter
 function PlayerHandStateAkimbo:at_enter(prev_state)
 	local result = akimboenter_orig(self, prev_state)
 	
+	weaponInitialRotation = nil
+	
 	getPlayerCam()
-	weaponInitialRotation = self._weapon_unit:local_rotation()
+	
+	-- This is an edge case that has actually happened at least once, causing a crash.
+	if self._weapon_unit then
+		weaponInitialRotation = self:getWeaponRotation()
+	end
 	
 	return result
 end
@@ -31,6 +45,15 @@ function PlayerHandStateAkimbo:update(t, dt)
 	if not playercam then
 		getPlayerCam()
 		if not playercam then
+			return result
+		end
+	end
+	
+	-- Try to get the initial rotation again if it isnt set yet.
+	-- If it still isnt there, return early and avoid recoil processing since it will just cause a crash.
+	if not weaponInitialRotation then
+		weaponInitialRotation = self:getWeaponRotation()
+		if not weaponInitialRotation then
 			return result
 		end
 	end

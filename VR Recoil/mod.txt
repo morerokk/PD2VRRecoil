@@ -4,7 +4,7 @@
     "description": "Adds recoil to VR.",
     "author": "Rokk",
     "contact": "http://steamcommunity.com/id/Rokk or Rokk#8740",
-    "version": "1.4",
+    "version": "1.5",
     "hooks": [
         {
             "hook_id": "lib/units/beings/player/states/vr/hand/playerhandstateweapon",
