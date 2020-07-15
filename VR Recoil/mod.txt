@@ -39,7 +39,7 @@
 		{
 			"identifier" : "vrrecoil",
 			"host" : {
-				"meta" : "unknown"
+				"meta" : "https://github.com/HugoZink/PD2VRRecoil/releases/download/refs%2Fheads%2Fmaster/meta.json"
 			}
 		}
 	]
