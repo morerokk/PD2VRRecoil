@@ -5,6 +5,16 @@ function PlayerStandardVR:_check_fire_per_weapon(t, pressed, held, released, wea
     -- This global variable checks which weapon is currently being fired/evaluated
     VRRecoil.FiredWeaponIsAkimbo = akimbo and true or false
 
+    -- If the weapon is released then reset the recoil
+    -- This works around a bug where firing both akimbos at the same time can result in the left gun getting stuck
+    if released or (weap_base:out_of_ammo() or self:_is_reloading()) then
+        if akimbo then
+            self._camera_unit:base():stop_shooting_akimbo(self._equipped_unit:base():recoil_wait())
+        else
+            self._camera_unit:base():stop_shooting(self._equipped_unit:base():recoil_wait())
+        end
+    end
+
     return playerstandardvr_check_fire_orig(self, t, pressed, held, released, weap_base, akimbo)
 end
 
