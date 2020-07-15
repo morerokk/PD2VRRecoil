@@ -58,15 +58,16 @@ function PlayerHandStateAkimbo:update(t, dt)
 		end
 	end
 	
-	local verticalKick = playercam._recoil_kick.to_reduce or playercam._recoil_kick.accumulated
-	local horizontalKick = playercam._recoil_kick.h.to_reduce or playercam._recoil_kick.h.accumulated
+	-- Same as PlayerHandStateWeapon, except it uses the akimbo-specific recoil variables.
+	local verticalKick = playercam._recoil_kick_akimbo.to_reduce or playercam._recoil_kick_akimbo.accumulated
+	local horizontalKick = playercam._recoil_kick_akimbo.h.to_reduce or playercam._recoil_kick_akimbo.h.accumulated
 	
 	if not verticalKick or not horizontalKick or not weaponInitialRotation then
 		return result
 	end
 	
-	verticalKick = verticalKick * VRRecoil.OnehandedRecoilMultiplier
-	horizontalKick = horizontalKick * VRRecoil.OnehandedRecoilMultiplier
+	verticalKick = verticalKick * VRRecoil.Tweak.OnehandedRecoilMultiplier
+	horizontalKick = horizontalKick * VRRecoil.Tweak.OnehandedRecoilMultiplier
 	
 	local weaponRotation = mrotation.copy(weaponInitialRotation)
 	local weaponPitch = weaponRotation:pitch()
