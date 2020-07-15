@@ -4,7 +4,7 @@
     "description": "Adds recoil to VR.",
     "author": "Rokk",
     "contact": "http://steamcommunity.com/id/Rokk or Rokk#8740",
-    "version": "1.5",
+    "version": "1.6",
     "priority": "-40",
     "hooks": [
         {
@@ -34,5 +34,13 @@
             "identifier" : "beardlib",
             "optional" : "false"
         }
-    ]
+    ],
+	"updates" : [
+		{
+			"identifier" : "vrrecoil",
+			"host" : {
+				"meta" : "unknown"
+			}
+		}
+	]
 }
