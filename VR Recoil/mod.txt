@@ -4,8 +4,17 @@
     "description": "Adds recoil to VR.",
     "author": "Rokk",
     "contact": "http://steamcommunity.com/id/Rokk or Rokk#8740",
-    "version": "1.5",
+    "version": "1.6",
+    "priority": "-40",
     "hooks": [
+        {
+            "hook_id": "lib/units/beings/player/states/vr/playerstandardvr",
+            "script_path": "playerstandardvr.lua"
+        },
+        {
+            "hook_id": "lib/units/cameras/fpcameraplayerbase",
+            "script_path": "fpcameraplayerbase.lua"
+        },
         {
             "hook_id": "lib/units/beings/player/states/vr/hand/playerhandstateweapon",
             "script_path": "playerhandstateweapon.lua"
@@ -25,5 +34,13 @@
             "identifier" : "beardlib",
             "optional" : "false"
         }
-    ]
+    ],
+	"updates" : [
+		{
+			"identifier" : "vrrecoil",
+			"host" : {
+				"meta" : "unknown"
+			}
+		}
+	]
 }

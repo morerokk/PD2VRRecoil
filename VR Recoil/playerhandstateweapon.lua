@@ -43,11 +43,11 @@ function PlayerHandStateWeapon:update(t, dt)
 	-- Reduce across the board, but reduce it more if two-handing the weapon
 	local is_assisting = self:hsm():other_hand():current_state_name() == "weapon_assist"
 	if is_assisting then
-		verticalKick = verticalKick * VRRecoil.TwohandedRecoilMultiplier
-		horizontalKick = horizontalKick * VRRecoil.TwohandedRecoilMultiplier
+		verticalKick = verticalKick * VRRecoil.Tweak.TwohandedRecoilMultiplier
+		horizontalKick = horizontalKick * VRRecoil.Tweak.TwohandedRecoilMultiplier
 	else
-		verticalKick = verticalKick * VRRecoil.OnehandedRecoilMultiplier
-		horizontalKick = horizontalKick * VRRecoil.OnehandedRecoilMultiplier
+		verticalKick = verticalKick * VRRecoil.Tweak.OnehandedRecoilMultiplier
+		horizontalKick = horizontalKick * VRRecoil.Tweak.OnehandedRecoilMultiplier
 	end
 	
 	-- Work around possible crashes like with bows
