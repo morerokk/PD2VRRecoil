@@ -1,7 +1,7 @@
-dofile(ModPath .. "VRRecoilMain.lua")
-
 -- This file is normally used by the desktop version too. To avoid problems, don't do anything on desktop.
 if not _G.IS_VR then return end
+
+dofile(ModPath .. "VRRecoilMain.lua")
 
 Hooks:PostHook(FPCameraPlayerBase, "init", "vrrecoil_cam_init", function(self)
     -- Initialize default akimbo recoil values
