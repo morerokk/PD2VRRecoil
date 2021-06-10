@@ -11,7 +11,7 @@ Hooks:PostHook(FPCameraPlayerBase, "init", "vrrecoil_cam_init", function(self)
 end)
 
 -- Add callbacks for akimbo value resetting
--- The function has to be replace entirely, because if the akimbo weapon was shot, this should not affect the main weapon.
+-- The function has to be replaced entirely, because if the akimbo weapon was shot, this should not affect the main weapon.
 local cam_start_shooting_orig = FPCameraPlayerBase.start_shooting
 function FPCameraPlayerBase:start_shooting()
 
