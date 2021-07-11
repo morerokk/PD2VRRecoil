@@ -57,6 +57,11 @@ function PlayerHandStateAkimbo:update(t, dt)
 			return result
 		end
 	end
+
+	-- If there is no weapon unit (can happen if you're cloaked?), you can get crashed if the weapon unit does not exist.
+	if not self._weapon_unit or not self._weapon_unit.alive or not self._weapon_unit:alive() then
+		return result
+	end
 	
 	-- Same as PlayerHandStateWeapon, except it uses the akimbo-specific recoil variables.
 	local verticalKick = playercam._recoil_kick_akimbo.to_reduce or playercam._recoil_kick_akimbo.accumulated

@@ -4,7 +4,7 @@
     "description": "Adds recoil to VR.",
     "author": "Rokk",
     "contact": "http://steamcommunity.com/id/Rokk or Rokk#8740",
-    "version": "1.6",
+    "version": "1.7",
     "priority": "-40",
     "hooks": [
         {

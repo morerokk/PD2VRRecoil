@@ -32,6 +32,11 @@ function PlayerHandStateWeapon:update(t, dt)
 			return result
 		end
 	end
+
+	-- If there is no weapon unit (can happen if you're cloaked?), you can get crashed if the weapon unit does not exist.
+	if not self._weapon_unit or not self._weapon_unit.alive or not self._weapon_unit:alive() then
+		return result
+	end
 	
 	local verticalKick = playercam._recoil_kick.to_reduce or playercam._recoil_kick.accumulated
 	local horizontalKick = playercam._recoil_kick.h.to_reduce or playercam._recoil_kick.h.accumulated
