@@ -27,7 +27,6 @@ function FPCameraPlayerBase:start_shooting()
 	self._recoil_kick_akimbo.h.current = self._recoil_kick_akimbo.h.current and self._recoil_kick_akimbo.h.current or self._recoil_kick_akimbo.h.accumulated or 0
 end
 
---[[
 local cam_stop_shooting_orig = FPCameraPlayerBase.stop_shooting
 function FPCameraPlayerBase:stop_shooting(wait)
 
@@ -39,7 +38,6 @@ function FPCameraPlayerBase:stop_shooting(wait)
 	self._recoil_kick_akimbo.h.to_reduce = self._recoil_kick_akimbo.h.accumulated
 	self._recoil_wait_akimbo = wait or 0
 end
-]]
 
 function FPCameraPlayerBase:stop_shooting_akimbo(wait)
 	self._recoil_kick_akimbo.to_reduce = self._recoil_kick_akimbo.accumulated
