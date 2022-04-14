@@ -67,6 +67,9 @@ function PlayerHandStateWeapon:update(t, dt)
 	
 	mrotation.set_yaw_pitch_roll(weaponRotation, weaponYaw + horizontalKick, weaponPitch + verticalKick, weaponRoll)
 	self._weapon_unit:set_rotation(weaponRotation)
+
+	-- Set the gadget rotation as well, otherwise for example the laser stays pointing in the original direction
+	self._weapon_unit:base():set_gadget_rotation(weaponRotation)
 	
 	return result
 end
